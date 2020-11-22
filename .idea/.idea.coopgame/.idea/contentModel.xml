@@ -413,6 +413,19 @@
           </e>
           <e p="Version.txt" t="Include" />
         </e>
+        <e p="NetworkStuff" t="Include">
+          <e p="Errors" t="Include">
+            <e p="CustomExceptions.cs" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="CustomNetworkMan.cs" t="Include" />
+            <e p="GridNetworkTransform.cs" t="Include" />
+            <e p="PlayerMovement.cs" t="Include" />
+            <e p="TEST_Customhud.cs" t="Include" />
+            <e p="TEST_multi_hud.cs" t="Include" />
+            <e p="TEST_Playercolor.cs" t="Include" />
+          </e>
+        </e>
         <e p="Noble Connect" t="Include">
           <e p="Common" t="Include">
             <e p="NobleConnectSettings.cs" t="Include" />
@@ -447,10 +460,6 @@
               <e p="NobleServer.cs" t="Include" />
             </e>
           </e>
-        </e>
-        <e p="Scripts" t="Include">
-          <e p="CustomNetworkMan.cs" t="Include" />
-          <e p="PlayerMovement.cs" t="Include" />
         </e>
       </e>
       <e p="coopgame.sln" t="IncludeFlat" />
