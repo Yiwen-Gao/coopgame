@@ -36,6 +36,12 @@ public class PlayerMovement : NetworkBehaviour
     [Command]
     void CmdMove(Vector2Int dir)
     {
-        gnt.coords += dir;
+        gnt.SetPosition(gnt.coords + dir);
+    }
+    
+    [Command]
+    void CmdRotate(int amount)
+    {
+        gnt.SetRotation((gnt.rotation + amount)%360);
     }
 }
