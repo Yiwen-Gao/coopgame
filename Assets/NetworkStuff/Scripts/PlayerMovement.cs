@@ -21,10 +21,10 @@ public class PlayerMovement : NetworkBehaviour
 
         if (Input.GetButtonDown("Horizontal"))
         {
-            transform.Translate(Vector3.right * (int)(Input.GetAxis("Horizontal")));
+            transform.Translate(Vector3.right * (Input.GetAxis("Horizontal") > 0 ? 1 : -1));
         } else if (Input.GetButtonDown(("Vertical"))) //we don't want diagonal movement (?)
         {
-            transform.Translate(Vector3.up * (int)(Input.GetAxis("Vertical")));
+            transform.Translate(Vector3.up * (Input.GetAxis("Vertical") > 0 ? 1 : -1));
         }
     }
 }
