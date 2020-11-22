@@ -22,16 +22,7 @@
     <list default="true" id="5eed117b-bb3d-4583-9cf2-cf3f033388ce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.coopgame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.coopgame/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.coopgame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.coopgame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NetworkPrefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NetworkPrefabs/Player.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NetworkPrefabs/Player.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NetworkScripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NetworkScripts/CustomNetworkMan.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NetworkScripts/CustomNetworkMan.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NetworkScripts/PlayerMovement.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NetworkScripts/PlayerMovement.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayerTestingScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayerTestingScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NetworkStuff/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NetworkStuff/Scripts/PlayerMovement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +31,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/NetworkStuff/Scripts/GridNetworkTransform.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -52,6 +46,9 @@
         <option value="$PROJECT_DIR$/Assets/NetworkScripts/TEST_Playercolor.cs" />
         <option value="$PROJECT_DIR$/Assets/NetworkScripts/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/NetworkStuff/Scripts/TEST_Playercolor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Mirror/Components/NetworkTransform.cs" />
+        <option value="$PROJECT_DIR$/Assets/NetworkStuff/Scripts/GridNetworkTransform.cs" />
+        <option value="$PROJECT_DIR$/Assets/NetworkStuff/Scripts/PlayerMovement.cs" />
       </list>
     </option>
   </component>
@@ -102,7 +99,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605996580657</updated>
-      <workItem from="1605996604654" duration="4857000" />
+      <workItem from="1605996604654" duration="6052000" />
     </task>
     <servers />
   </component>
