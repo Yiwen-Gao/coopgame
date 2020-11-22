@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//See from resource: https://www.youtube.com/watch?v=Fx8efi2MNz0
 public class PlayerNameInput : MonoBehaviour
 {
 
@@ -38,7 +39,7 @@ public class PlayerNameInput : MonoBehaviour
     }
 
     //Saves player name for players that have played before
-   public void SavePlayerName()
+    public void SavePlayerName()
     {
         DisplayName = nameInputField.text;
 
