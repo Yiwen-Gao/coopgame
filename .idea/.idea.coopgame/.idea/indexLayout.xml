@@ -19,8 +19,10 @@
       <Path>.idea</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
+      <Path>MonoBleedingEdge</Path>
       <Path>Temp</Path>
       <Path>UserSettings</Path>
+      <Path>coopgame_Data</Path>
       <Path>obj</Path>
     </explicitExcludes>
   </component>

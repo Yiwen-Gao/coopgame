@@ -13,8 +13,11 @@ namespace DapperDino.Mirror.Tutorials.Chat
 
         private static event Action<string> OnMessage;
 
+        public bool isChatting = false;
+
         public override void OnStartAuthority()
         {
+            base.OnStartAuthority();
             chatUI.SetActive(true);
 
             OnMessage += HandleNewMessage;
@@ -36,6 +39,7 @@ namespace DapperDino.Mirror.Tutorials.Chat
         [Client]
         public void Send(string message)
         {
+            Debug.Log("hello");
             if (!Input.GetKeyDown(KeyCode.Return)) { return; }
 
             if (string.IsNullOrWhiteSpace(message)) { return; }
@@ -55,6 +59,14 @@ namespace DapperDino.Mirror.Tutorials.Chat
         private void RpcHandleMessage(string message)
         {
             OnMessage?.Invoke($"\n{message}");
+        }
+
+        private void Update()
+        {
+            if (!hasAuthority) return;
+            if (Input.GetButtonDown("Chat")) 
+                inputField.ActivateInputField();
+            isChatting = inputField.isFocused;
         }
     }
 }

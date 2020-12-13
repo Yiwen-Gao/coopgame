@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DapperDino.Mirror.Tutorials.Chat;
 using Mirror;
 using UnityEngine;
 
 public class PlayerMovement : NetworkBehaviour
 {
     private GridNetworkTransform gnt;
+
+    private ChatBehaviour cb;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,12 @@ public class PlayerMovement : NetworkBehaviour
         if (gnt == null)
         {
             throw new BadComponentException("This component requires a GridNetworkTransform on the object as well");
+        }
+
+        cb = this.GetComponent<ChatBehaviour>();
+        if (cb == null)
+        {
+            throw new BadComponentException("Without a ChatBehaviour, the player cannot chat");
         }
     }
 
@@ -23,6 +32,8 @@ public class PlayerMovement : NetworkBehaviour
         {
             return; //We don't want other people to be controlling us.
         }
+
+        if (cb.isChatting) return;
 
         if (Input.GetButtonDown("Horizontal"))
         {
