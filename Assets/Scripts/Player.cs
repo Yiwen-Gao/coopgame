@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour {
+public class Player : MonoBehaviour {
 
 	public Sprite head;
 	public Sprite body;
