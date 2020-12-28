@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
 	public Sprite tail;
 
 	public int characterSize = 5;
-	public float blockSize = 25f;
+	public float blockSize = 1f;
 	public float speed = 0.1f;
 
 	private float[,] positions;

@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Noble Connect/Mirror/Examples/Lobby/Play Scene.unity
     guid: 63e0c9a81fb6180429262deeeee3fadc
   - enabled: 0
-    path: Assets/NetworkStuff/Chat/Scene_Chat.unity
+    path: Assets/Chat/Scene_Chat.unity
     guid: 1ad86c95a55c15b46967f0c52de26401
   m_configObjects: {}
