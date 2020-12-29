@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using NobleConnect.Mirror;
@@ -13,7 +13,7 @@ public class CustomNetworkManager : NobleNetworkManager {
         generator = new PlayerGenerator();
     }
 
-    public override void OnServerAddPlayer(NetworkConnection conn) {
+    /*public override void OnServerAddPlayer(NetworkConnection conn) {
         playerPrefab = generator.GetRandomPlayer();
 
         Transform startPos = GetStartPosition();
@@ -22,5 +22,5 @@ public class CustomNetworkManager : NobleNetworkManager {
                 : Instantiate(playerPrefab);
 
             NetworkServer.AddPlayerForConnection(conn, player);
-    }
+    }*/
 }
