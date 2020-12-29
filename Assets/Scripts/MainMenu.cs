@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
     public InputField portfield;
 
     // Used to determine which GUI to display
-    private bool isHost;
+    static public bool isHost;
         
     // Get a reference to the NetworkManager
     public void Start()
