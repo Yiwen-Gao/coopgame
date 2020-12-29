@@ -77,6 +77,8 @@ public class NetworkManagerLobby : NetworkManager
 
             //Tying player connection and game object
             NetworkServer.AddPlayerForConnection(conn, roomPlayerInstance.gameObject);
+
+            Grid.AddPlayer();
         }
     }
 }

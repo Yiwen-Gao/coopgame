@@ -56,7 +56,7 @@ public class Player : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        Move();
+        //Move();
     }
 
     void Move() {
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour {
     	transform.position += moveDir * speed;
     }
 
-    float[,] GetPositions() {
+    public float[,] GetPositions() {
     	return positions;
     } 
 }
