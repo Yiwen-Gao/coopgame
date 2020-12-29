@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using NobleConnect.Mirror;
@@ -15,7 +15,7 @@ public class CustomNetworkManager : NobleNetworkManager {
         myGrid = new Grid();
     }
 
-    public override void OnServerAddPlayer(NetworkConnection conn) {
+    /*public override void OnServerAddPlayer(NetworkConnection conn) {
         //playerPrefab = generator.GetRandomPlayer();
 
         Transform startPos = GetStartPosition();
@@ -25,5 +25,5 @@ public class CustomNetworkManager : NobleNetworkManager {
 
             NetworkServer.AddPlayerForConnection(conn, player);
         myGrid.AddPlayer();
-    }
+    }*/
 }
