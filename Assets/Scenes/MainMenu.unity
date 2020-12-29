@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 185542765}
   - component: {fileID: 185542764}
   m_Layer: 0
-  m_Name: NetworkMan
+  m_Name: NetworkManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 993316229559572749, guid: de1b0449cbc97f943be2fa3c350acf55, type: 3}
+  playerPrefab: {fileID: 5953978617891525924, guid: b820e49bed9874663ad4c2a83f0f697c, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []

@@ -74,6 +74,7 @@ public class NetworkManagerLobby : NetworkManager
         if(SceneManager.GetActiveScene().name == menuScene)
         {
             NetworkRoomPlayerLobby roomPlayerInstance = Instantiate(roomPlayerPrefab);
+            Debug.Log("hello!");
 
             //Tying player connection and game object
             NetworkServer.AddPlayerForConnection(conn, roomPlayerInstance.gameObject);

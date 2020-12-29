@@ -50,8 +50,8 @@ MonoBehaviour:
   autoStartServerBuild: 1
   showDebugMessages: 0
   serverTickRate: 30
-  offlineScene: Assets/Noble Connect/Mirror/Examples/Lobby/Example Lobby Scene.unity
-  onlineScene: Assets/Noble Connect/Mirror/Examples/Lobby/Example Lobby Scene.unity
+  offlineScene: 
+  onlineScene: 
   transport: {fileID: 5249253988742041922}
   networkAddress: localhost
   maxConnections: 4
@@ -74,8 +74,8 @@ MonoBehaviour:
   showRoomGUI: 1
   minPlayers: 0
   roomPlayerPrefab: {fileID: 8460794719005077895, guid: ecdb000f90e4d5f4ab37d1250f7e6006, type: 3}
-  RoomScene: Assets/Noble Connect/Mirror/Examples/Lobby/Example Lobby Scene.unity
-  GameplayScene: Assets/Noble Connect/Mirror/Examples/Lobby/Play Scene.unity
+  RoomScene: 
+  GameplayScene: 
   allPlayersReady: 0
   roomSlots: []
 --- !u!114 &5249253988742041923

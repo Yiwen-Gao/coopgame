@@ -2,29 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGenerator : MonoBehaviour {
+public class PlayerGenerator {
 
     private List<GameObject> allPlayers;
+    private HashSet<int> existingPlayers;
 
-    // Start is called before the first frame update
-    void Start() {
-        // allPlayers = new List<GameObject>();
-        // Object[] objs = Resources.LoadAll("Prefabs", typeof(GameObject));
-        // foreach (GameObject obj in objs) {
-        //     allPlayers.Add(obj);
-        // }
+    public PlayerGenerator() {
+        allPlayers = new List<GameObject>();
+        Object[] objs = Resources.LoadAll("Players", typeof(GameObject));
+        foreach (GameObject obj in objs) {
+            allPlayers.Add(obj);
+        }
+
+        existingPlayers = new HashSet<int>();
     }
 
-    // GameObject GetRandomPlayer() {
-    //     int idx = Random.Range(0, allPlayers.Count);
-    //     return allPlayers[idx];
-    // }
+    public GameObject GetRandomPlayer() {
+        int idx;
+        do {
+            idx = Random.Range(0, allPlayers.Count);
+        } while (existingPlayers.Contains(idx)); 
 
-    // List<GameObject> GetSubsetPlayers(int count) {
-    //     if (count > 0) {
-    //         return allPlayers.GetRange(0, count - 1);
-    //     } else {
-    //         return new List<GameObject>();
-    //     }
-    // }
+        Debug.Log("hello " + allPlayers.Count);
+        existingPlayers.Add(idx);
+        return allPlayers[idx];
+    }
+
+    List<GameObject> GetSubsetPlayers(int count) {
+        if (count > 0 && allPlayers.Count > 0) {
+            count %= allPlayers.Count;
+            return allPlayers.GetRange(0, count - 1);
+        } else {
+            return new List<GameObject>();
+        }
+    }
 }
