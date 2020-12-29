@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
 
-public class Grid : MonoBehaviour
+public class Grid : NetworkBehaviour
 {
-    public static List<GameObject> myPlayers;
-    public static GameObject debugPrefab;
+    public List<GameObject> myPlayers;
+    public GameObject debugPrefab;
 
     // 0 = empty, 1 = target, 
-    static int[,] myGrid;
-    static GameObject[,] myGridObjects;
+    int[,] myGrid;
+    GameObject[,] myGridObjects;
 
-    static int gridSize = 20;
+    int gridSize = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +23,10 @@ public class Grid : MonoBehaviour
         //DrawGrid();
 
         //Init();
+        AddPlayer();
     }
 
-    public static void AddPlayer()
+    public void AddPlayer()
     {
         Debug.Log("ADDING PLAYER");
         myPlayers = new List<GameObject>();
@@ -35,6 +36,7 @@ public class Grid : MonoBehaviour
             myPlayers.Add(p);
         }
         myGrid = new int[gridSize, gridSize];
+        myGridObjects = new GameObject[gridSize, gridSize];
         Init();
 
         DrawGrid();
@@ -58,21 +60,24 @@ public class Grid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("COUNTING");
+        List<GameObject> p = ListPlayers();
+        if(p.Count != myPlayers.Count)
+            AddPlayer();
         //get players location and transformation (currPlayer.GetComponent<>(GridNetworkTransform))
     }
 
-    static void DrawGrid()
+    void DrawGrid()
     {
         for (int i = 0; i < gridSize; i++)
         {
             for (int j = 0; j < gridSize; j++)
             {
-                if(myGridObjects[i,j] != null)
+                if(myGridObjects[i,j] != null && myGrid[i,j] == 1)
                     Destroy(myGridObjects[i, j]);
-                if (myGrid[i, j] != 1)
+                if (myGridObjects[i, j] == null && myGrid[i, j] != 1)
                 {
                     myGridObjects[i, j] = (GameObject)(Instantiate(debugPrefab, new Vector3(i, j, 0.001f), Quaternion.identity));
-                    Debug.Log("HELLO");
                 }
             }
         }
@@ -91,8 +96,11 @@ public class Grid : MonoBehaviour
 
     //assume each character's head is (0,0)
     //create the random target location
-    static void Init()
+    void Init()
     {
+        if (myPlayers.Count == 0)
+            return;
+
         Random rnd = new Random();
 
         int[] boundary = new int[4];
@@ -133,7 +141,7 @@ public class Grid : MonoBehaviour
         }
     }
 
-    static private void PlacePlayer(Player player, int r, int c, int[] boundary)
+    private void PlacePlayer(Player player, int r, int c, int[] boundary)
     {
         float[,] pos = player.GetPositions();
 
@@ -160,7 +168,7 @@ public class Grid : MonoBehaviour
         }
     }
 
-    static private int GetHeight(Player player)
+    private int GetHeight(Player player)
     {
         int height = 1;
         float[,] pos = player.GetPositions();
@@ -174,7 +182,7 @@ public class Grid : MonoBehaviour
         }
         return height;
     }
-    static private int GetWidth(Player player)
+    private int GetWidth(Player player)
     {
         int width = 1;
         float[,] pos = player.GetPositions();
