@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
@@ -37,9 +37,11 @@ public class Grid : NetworkBehaviour
         }
         myGrid = new int[gridSize, gridSize];
         myGridObjects = new GameObject[gridSize, gridSize];
-        Init();
 
         DrawGrid();
+        Init();
+
+        
     }
 
     List<GameObject> ListPlayers()
@@ -49,7 +51,7 @@ public class Grid : NetworkBehaviour
 
         List<GameObject> players = new List<GameObject>();
         GameObject[] pc = GameObject.FindGameObjectsWithTag("Player");
-        Debug.Log("PLAYER LENGTH: " + pc.Length);
+        //Debug.Log("PLAYER LENGTH: " + pc.Length);
         for (int i = 0; i < pc.Length; i++)
         {
                 players.Add(pc[i]);
@@ -60,7 +62,7 @@ public class Grid : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("COUNTING");
+        //Debug.Log("COUNTING");
         List<GameObject> p = ListPlayers();
         if(p.Count != myPlayers.Count)
             AddPlayer();
@@ -78,9 +80,11 @@ public class Grid : NetworkBehaviour
                 if (myGridObjects[i, j] == null && myGrid[i, j] != 1)
                 {
                     myGridObjects[i, j] = (GameObject)(Instantiate(debugPrefab, new Vector3(i, j, 0.001f), Quaternion.identity));
+                    
                 }
             }
         }
+
     }
     //void DebugGrid()
     //{
@@ -94,78 +98,134 @@ public class Grid : NetworkBehaviour
     //    }
     //}
 
-    //assume each character's head is (0,0)
-    //create the random target location
     void Init()
     {
         if (myPlayers.Count == 0)
             return;
 
-        Random rnd = new Random();
-
         int[] boundary = new int[4];
 
         int r = (int)(gridSize/2);
-        int c = (int)(gridSize / 2);
+        int c = (int)(gridSize/2);
 
         Player firstPlayer = myPlayers[0].GetComponent(typeof(Player)) as Player;
-        PlacePlayer(firstPlayer, r, c, boundary);
+        boundary = PlacePlayer(firstPlayer, r, c, boundary);
+        Debug.Log("Boundary");
+        Debug.Log(boundary[0]);
+        Debug.Log(boundary[1]);
+        Debug.Log(boundary[2]);
+        Debug.Log(boundary[3]);
 
         int side = 0;
         for (int i = 1; i < myPlayers.Count; i++)
         {
             Player player = myPlayers[i].GetComponent(typeof(Player)) as Player;
 
-            //0 = top, 1 = left, 2 = bottom, 3 = right
+            //0 = left, 1 = bottom, 2 = top, 3 = right
             //int side = (int)(rnd.random() * 4);
             int playerHeight = GetHeight(player);
             int playerWidth = GetWidth(player);
 
             if (side == 0)
             {
-                PlacePlayer(player, boundary[side] - playerHeight, (boundary[1] + boundary[3]) / 2, boundary);
-            }
-            if (side == 1)
-            {
-                PlacePlayer(player, (boundary[0] + boundary[2]) / 2, boundary[side] - playerWidth, boundary);
-            }
-            if (side == 2)
-            {
-                PlacePlayer(player, boundary[side], (boundary[1] + boundary[3]) / 2, boundary);
-            }
-            if (side == 3)
-            {
-                PlacePlayer(player, (boundary[0] + boundary[2]) / 2, boundary[side], boundary);
+                boundary = PlacePlayer(player, boundary[side] - playerWidth+1, boundary[1]+1, boundary);
             }
             side += 1;
+            Debug.Log("Boundary");
+            Debug.Log(boundary[0]);
+            Debug.Log(boundary[1]);
+            Debug.Log(boundary[2]);
+            Debug.Log(boundary[3]);
         }
+        
+
     }
 
-    private void PlacePlayer(Player player, int r, int c, int[] boundary)
+    //original
+    //assume each character's head is (0,0)
+    //create the random target location
+    // void Init()
+    // {
+    //     if (myPlayers.Count == 0)
+    //         return;
+
+    //     Random rnd = new Random();
+
+    //     int[] boundary = new int[4];
+
+    //     int r = (int)(gridSize/2);
+    //     int c = (int)(gridSize / 2);
+
+    //     Player firstPlayer = myPlayers[0].GetComponent(typeof(Player)) as Player;
+    //     PlacePlayer(firstPlayer, r, c, boundary);
+
+    //     int side = 0;
+    //     for (int i = 1; i < myPlayers.Count; i++)
+    //     {
+    //         Player player = myPlayers[i].GetComponent(typeof(Player)) as Player;
+
+    //         //0 = top, 1 = left, 2 = bottom, 3 = right
+    //         //int side = (int)(rnd.random() * 4);
+    //         int playerHeight = GetHeight(player);
+    //         int playerWidth = GetWidth(player);
+
+    //         if (side == 0)
+    //         {
+    //             PlacePlayer(player, boundary[side] - playerHeight, (boundary[1] + boundary[3]) / 2, boundary);
+    //         }
+    //         if (side == 1)
+    //         {
+    //             PlacePlayer(player, (boundary[0] + boundary[2]) / 2, boundary[side] - playerWidth, boundary);
+    //         }
+    //         if (side == 2)
+    //         {
+    //             PlacePlayer(player, boundary[side], (boundary[1] + boundary[3]) / 2, boundary);
+    //         }
+    //         if (side == 3)
+    //         {
+    //             PlacePlayer(player, (boundary[0] + boundary[2]) / 2, boundary[side], boundary);
+    //         }
+    //         side += 1;
+    //     }
+    // }
+
+    private int[] PlacePlayer(Player player, int r, int c, int[] boundary)
     {
         float[,] pos = player.GetPositions();
 
         for (int i = 0; i < pos.GetLength(0); i++)
         {
+            //leftmost
             if (boundary[0] == 0 || pos[i,0] + r <= boundary[0])
             {
                 boundary[0] = (int)pos[i, 0] + r - 1;
             }
+            //bottom most
             if (boundary[1] == 0 || pos[i, 1] + c <= boundary[1])
             {
                 boundary[1] = (int)pos[i, 1] + c - 1;
             }
-            if (pos[i, 0] + r >= boundary[2])
+            //top most
+            if (pos[i, 1] + c >= boundary[2])
             {
-                boundary[2] = (int)pos[i, 0] + r + 1;
+                boundary[2] = (int)pos[i, 1] + c + 1;
             }
-            if (pos[i, 1] + c >= boundary[3])
+            //right most
+            if (pos[i, 0] + r >= boundary[3])
             {
-                boundary[3] = (int)pos[i, 1] + c + 1;
+                boundary[3] = (int)pos[i, 0] + r + 1;
             }
+            
 
             myGrid[r + (int)pos[i, 0], c + (int)pos[i, 1]] = 1;
+            Debug.Log("Setting color of target row");
+            Debug.Log(r+ (int)pos[i, 0]);
+            Debug.Log("Setting color of target col");
+            Debug.Log(c + (int)pos[i, 1]);
+            myGridObjects[r + (int)pos[i, 0], c + (int)pos[i, 1]].GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         }
+
+        return boundary;
     }
 
     private int GetHeight(Player player)
