@@ -14,9 +14,4 @@ public class CustomNetworkManager : NobleNetworkManager {
         generator = new PlayerGenerator();
         myGrid = new Grid();
     }
-
-    public void Start() {
-        // generator = new PlayerGenerator();
-        // playerPrefab = generator.GetRandomPlayer();
-    }
 }
