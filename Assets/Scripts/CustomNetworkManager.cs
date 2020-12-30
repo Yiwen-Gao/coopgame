@@ -10,8 +10,8 @@ public class CustomNetworkManager : NobleNetworkManager {
 
     private PlayerGenerator generator;
     public void Start() {
-        generator = new PlayerGenerator();
-        playerPrefab = generator.GetRandomPlayer();
+        // generator = new PlayerGenerator();
+        // playerPrefab = generator.GetRandomPlayer();
     }
 
     // public override void OnServerAddPlayer(NetworkConnection conn) {
