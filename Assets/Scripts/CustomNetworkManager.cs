@@ -15,15 +15,8 @@ public class CustomNetworkManager : NobleNetworkManager {
         myGrid = new Grid();
     }
 
-    /*public override void OnServerAddPlayer(NetworkConnection conn) {
-        //playerPrefab = generator.GetRandomPlayer();
-
-        Transform startPos = GetStartPosition();
-            GameObject player = startPos != null
-                ? Instantiate(playerPrefab, startPos.position, startPos.rotation)
-                : Instantiate(playerPrefab);
-
-            NetworkServer.AddPlayerForConnection(conn, player);
-        myGrid.AddPlayer();
-    }*/
+    public void Start() {
+        // generator = new PlayerGenerator();
+        // playerPrefab = generator.GetRandomPlayer();
+    }
 }
